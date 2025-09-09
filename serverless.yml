@@ -1,0 +1,31 @@
+service: csv-validator
+
+provider:
+  name: aws
+  runtime: python3.11
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  architecture: x86_64
+  
+  environment:
+    STAGE: ${self:provider.stage}
+    LD_LIBRARY_PATH: /opt/lib:/opt/lib64
+    MAGIC: /opt/share/misc/magic.mgc:/opt/share/file/magic
+
+functions:
+  validate-csv:
+    handler: lambda_handler.lambda_handler
+    description: Validates if uploaded file is a CSV using python-magic
+    timeout: 30
+    memorySize: 512
+    layers:
+      - ${file(./layer_info.json):layerArn}
+    events:
+      - http:
+          path: validate
+          method: post
+          cors: true
+
+package:
+  patterns:
+    - 'lambda_function.py'

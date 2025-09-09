@@ -1,0 +1,25 @@
+{
+  "name": "csv-validator-lambda",
+  "version": "1.0.0",
+  "description": "Lambda function to validate CSV files using python-magic",
+  "main": "lambda_function.py",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "deploy-dev": "serverless deploy --stage dev",
+    "deploy-prod": "serverless deploy --stage prod",
+    "test": "python lambda_function.py",
+    "remove": "serverless remove"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0"
+  },
+  "keywords": [
+    "lambda",
+    "csv",
+    "validation",
+    "python-magic",
+    "serverless"
+  ],
+  "author": "",
+  "license": "MIT"
+}
