@@ -2,6 +2,8 @@
 
 A simple AWS Lambda function that validates if an uploaded file is a CSV using python-magic library.
 
+Just use `puremagic` https://pypi.org/project/puremagic/
+
 ## Features
 
 - Validates file MIME type using python-magic
